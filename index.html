@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <img id="animated-img" width="500" height="300"></img>
+    <script>
+        (function () {
+            const data = [
+                {
+                    imgSrc: "https://s.yimg.com/ud/hp/td/og_image_512_hk.png",
+                    target: "https://hk.yahoo.com/"
+                },
+                {
+                    imgSrc: "https://news.now.com/revamp2014/images/news_logo_400.png",
+                    target: "https://news.now.com/"
+                },
+                {
+                    imgSrc: "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_160x56dp.png",
+                    target: "https://www.google.com/"
+                }
+            ];
+
+            var i = 0;
+            var handle = NaN;
+
+            var currentItem;
+
+            const animatedImg = document.getElementById("animated-img");
+
+            animatedImg.addEventListener("click", function() {
+                window.open(currentItem.target);
+            });
+
+            (function animate() {
+                if (!isNaN(handle)) {
+                    clearTimeout(handle);
+                }
+                
+                currentItem = data[++i % data.length];
+                animatedImg.src = currentItem.imgSrc;
+                handle = setTimeout(animate, 1000);
+            }());
+        }());
+    </script>
+</body>
+</html>
