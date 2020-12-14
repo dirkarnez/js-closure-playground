@@ -39,7 +39,7 @@
                     clearTimeout(handle);
                 }
                 
-                currentItem = data[++i % data.length];
+                currentItem = data[i = ++i % data.length];
                 animatedImg.src = currentItem.imgSrc;
                 handle = setTimeout(animate, 1000);
             }());
