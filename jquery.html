@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function $(idSelector) {
+            const element = document.querySelector(idSelector);
+            return {
+                append: function (content) {
+                    if (element) {
+                        element.append(content);
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <p id="my-paragraph"></p>
+    <script>
+        $("#my-paragraph").append("1234");
+    </script>
+</body>
+</html>
