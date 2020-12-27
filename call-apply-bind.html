@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This is real document.title</title>
+</head>
+<body>
+    <script>
+        function consoleLog(...a) {
+            console.log(this.document.title, ...a);
+        }
+        consoleLog(1, 2, 3);
+
+        consoleLog.apply(null, ["apply", 1, 2, 3]);
+
+        consoleLog.apply(
+            { 
+                document: {
+                    title: "This is fake document.title"
+                }
+            }, 
+            ["apply", 1, 2, 3]
+        );
+        
+        consoleLog.call(null, "call", 1, 2, 3);
+        consoleLog.call(
+            { 
+                document: {
+                    title: "This is fake document.title"
+                }
+            }, 
+            "call", 1, 2, 3
+        );
+
+
+        const consoleLogBinded = consoleLog.bind({ 
+            document: {
+                title: "This is binded document.title"
+            }
+        });
+
+        consoleLogBinded();
+    </script>
+</body>
+</html>
